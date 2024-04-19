@@ -1,0 +1,28 @@
+#!/bin/bash
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+brew install nvm
+brew install --cask appcleaner
+brew install --cask google-chrome
+brew install --cask notion
+brew install --cask postman
+brew install --cask visual-studio-code
+brew install --cask zoom
+
+touch "$HOME/.workrc"
+git config --global user.name "Jonathan Lowell"
+git config --global user.email "elderlowell@gmail.com"
+
+chsh -s $(which zsh)
+
+if [ ! -d "$HOME/Code" ]
+then
+  mkdir "$HOME/Code"
+fi
+
+if [ ! -d "$HOME/Code/mac-setup" ]
+then
+  git clone https://github.com/elderlowell/mac-setup.git "$HOME/Code/mac-setup"
+fi
