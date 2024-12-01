@@ -1,0 +1,1 @@
+export SETTINGS_DIR="${HOME}/Git/elderlowell-settings"

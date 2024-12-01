@@ -3,10 +3,14 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 brew install nvm
 brew install --cask appcleaner
 brew install --cask audacity
 brew install --cask blu-ray-player-pro
+brew install --cask chatgpt
+brew install --cask gamemaker
 brew install --cask google-chrome
 brew install --cask notion
 brew install --cask obs
@@ -28,7 +32,22 @@ then
   mkdir "$HOME/Code"
 fi
 
-if [ ! -d "$HOME/Code/mac-setup" ]
+if [ ! -d "$HOME/Git" ]
 then
-  git clone https://github.com/elderlowell/mac-setup.git "$HOME/Code/mac-setup"
+  mkdir -p "$HOME/Git/elderlowell-settings"
+fi
+
+
+if [ ! -d "$HOME/Git/mac-setup" ]
+then
+  git clone https://github.com/elderlowell/mac-setup.git "$HOME/Git/mac-setup"
+fi
+
+echo "Do you want to set up a new SSH key for the system? (y/n)"
+read response
+if [ "$response" = "y" ]
+then
+  new-ssh-key
+else
+  echo "No SSH key will be set up. You can always set one up later by running \"new-ssh-key\"."
 fi
